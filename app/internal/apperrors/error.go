@@ -72,8 +72,8 @@ func TargetNotFound(target int) *Error {
 	return New(codes.TargetNotFound, fmt.Errorf("target with id '%d' was not found", target))
 }
 
-func InvalidCatBreed(breed string) *Error {
-	return New(codes.InvalidRequest, fmt.Errorf("invalid cat's breed '%s'", breed))
+func InvalidCatBreed(breed string, reason string) *Error {
+	return New(codes.InvalidRequest, fmt.Errorf("cat's breed '%s' is invalid: %s", breed, reason))
 }
 
 func InvalidTargetsCount(count, min, max int) *Error {
