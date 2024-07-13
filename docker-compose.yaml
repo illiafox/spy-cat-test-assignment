@@ -1,0 +1,33 @@
+services:
+
+  database:
+    image: postgres:16.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: dev_pass
+      POSTGRES_DB: spy_cats
+    restart: on-failure
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: pg_isready -U postgres -d spy_cats
+      interval: 1s
+      timeout: 3s
+      retries: 15
+
+  app:
+    build: .
+    depends_on:
+      database:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_URI: 'postgresql://postgres:dev_pass@database:5432/spy_cats'
+
+volumes:
+  pg_data:
