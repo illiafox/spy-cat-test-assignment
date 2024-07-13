@@ -63,6 +63,7 @@ A RESTful API for managing spy cats, their missions, and targets.
     - [Cats](#cats)
     - [Missions](#missions)
     - [Targets](#targets)
+- [Contributing](#contributing)
 
 ## Installation
 
@@ -240,3 +241,5 @@ Postgres URI: `postgresql://postgres:dev_pass@localhost:5432/spy_cats`.
     - Example request: `DELETE http://127.0.0.1:8080/missions/6/targets/11`
 
 
+# Contributing
+Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) 
