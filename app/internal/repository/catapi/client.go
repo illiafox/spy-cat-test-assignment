@@ -7,6 +7,7 @@ import (
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/apperrors"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 type Client struct {
@@ -48,8 +49,27 @@ func (c Client) CheckBreed(ctx context.Context, breed string) (formattedBreed st
 		return "", apperrors.Internal(err).Wrap("json: unmarshall body")
 	}
 
-	if len(body) != 1 { // 0 if breed not found, > 1 if name is ambiguous
-		return "", apperrors.InvalidCatBreed(breed)
+	if len(body) == 0 {
+		return "", apperrors.InvalidCatBreed(breed, "not found")
+	}
+
+	if len(body) > 1 { // name is ambiguous
+		const limit = 5
+
+		otherBreeds := make([]string, 0, limit)
+		for i := 0; i < limit && i < len(body); i++ {
+			otherBreeds = append(otherBreeds, body[i].Name)
+		}
+
+		return "", apperrors.InvalidCatBreed(breed,
+			fmt.Sprintf("is ambiguous, other variants: %s", strings.Join(otherBreeds, ", ")),
+		)
+	}
+
+	if strings.ToLower(breed) != strings.ToLower(body[0].Name) {
+		return "", apperrors.InvalidCatBreed(breed,
+			fmt.Sprintf("maybe you meant '%s'?", body[0].Name),
+		)
 	}
 
 	return body[0].Name, nil
