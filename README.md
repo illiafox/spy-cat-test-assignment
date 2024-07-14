@@ -73,14 +73,8 @@ A RESTful API for managing spy cats, their missions, and targets.
    git clone github.com/illiafox/spy-cat-test-assignment.git
    cd spy-cat-test-assignment
    ```
-   
-2. Install dependencies:
 
-   ```sh
-   go mod tidy
-   ```
-
-3. Start docker compose:
+2. Start docker compose:
 
    ```sh
     docker compose up -d
