@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/models"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/service/dto"
 )

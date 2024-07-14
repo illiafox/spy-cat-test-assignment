@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"fmt"
+
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/apperrors"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/models"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/service/dto"
@@ -98,7 +99,6 @@ func (s Service) CreateMission(ctx context.Context, params dto.CreateMissionPara
 
 		return nil
 	})
-
 	if err != nil {
 		return -1, fmt.Errorf("within transaction: %w", err)
 	}
@@ -130,7 +130,6 @@ func (s Service) AddMissionTargets(ctx context.Context, missionID int, newTarget
 
 		return nil
 	})
-
 	if err != nil {
 		return fmt.Errorf("within transaction: %w", err)
 	}
@@ -154,7 +153,6 @@ func (s Service) GetMissionByID(ctx context.Context, missionID int) (out *models
 
 		return nil
 	})
-
 	if err != nil {
 		return nil, fmt.Errorf("within transaction: %w", err)
 	}
@@ -201,7 +199,6 @@ func (s Service) UpdateMissionByID(ctx context.Context, params dto.UpdateMission
 
 		return nil
 	})
-
 	if err != nil {
 		return fmt.Errorf("within transaction: %w", err)
 	}
@@ -231,7 +228,6 @@ func (s Service) DeleteMissionByID(ctx context.Context, missionID int) (err erro
 
 		return nil
 	})
-
 	if err != nil {
 		return fmt.Errorf("within transaction: %w", err)
 	}
@@ -263,7 +259,6 @@ func (s Service) GetTargetsByMissionID(ctx context.Context, missionID int) (out 
 
 		return nil
 	})
-
 	if err != nil {
 		return nil, fmt.Errorf("within transaction: %w", err)
 	}
@@ -296,7 +291,6 @@ func (s Service) GetTargetByID(ctx context.Context, missionID, targetID int) (ou
 
 		return nil
 	})
-
 	if err != nil {
 		return nil, fmt.Errorf("within transaction: %w", err)
 	}
@@ -329,7 +323,6 @@ func (s Service) CompleteTargetByID(ctx context.Context, missionID, targetID int
 
 		return nil
 	})
-
 	if err != nil {
 		return fmt.Errorf("within transaction: %w", err)
 	}
@@ -360,7 +353,6 @@ func (s Service) DeleteTargetByID(ctx context.Context, missionID, targetID int) 
 
 		return nil
 	})
-
 	if err != nil {
 		return fmt.Errorf("within transaction: %w", err)
 	}
@@ -395,7 +387,6 @@ func (s Service) AddTargetNote(ctx context.Context, missionID, targetID int, con
 
 		return nil
 	})
-
 	if err != nil {
 		return fmt.Errorf("within transaction: %w", err)
 	}

@@ -4,6 +4,8 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"time"
+
 	"github.com/huandu/go-sqlbuilder"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/apperrors"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/models"
@@ -11,7 +13,6 @@ import (
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/service/dto"
 	"github.com/illiafox/spy-cat-test-assignment/app/pkg/poolwrapper"
 	"github.com/jackc/pgx/v5"
-	"time"
 )
 
 type CatsRepository struct {

@@ -3,6 +3,8 @@ package postgres
 import (
 	"context"
 	"errors"
+	"time"
+
 	"github.com/huandu/go-sqlbuilder"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/apperrors"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/models"
@@ -10,7 +12,6 @@ import (
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/service/dto"
 	"github.com/illiafox/spy-cat-test-assignment/app/pkg/poolwrapper"
 	"github.com/jackc/pgx/v5"
-	"time"
 )
 
 type MissionsRepository struct {
@@ -22,7 +23,7 @@ func NewMissionsRepository(db *poolwrapper.Pool) *MissionsRepository {
 }
 
 func (r *MissionsRepository) Create(ctx context.Context) (missionID int, err error) {
-	var query = "INSERT INTO missions DEFAULT VALUES RETURNING id"
+	query := "INSERT INTO missions DEFAULT VALUES RETURNING id"
 
 	err = r.db.QueryRow(ctx, query).Scan(&missionID)
 	if err != nil {

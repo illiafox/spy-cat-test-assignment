@@ -3,6 +3,7 @@ package apperrors
 import (
 	"errors"
 	"fmt"
+
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/apperrors/codes"
 )
 

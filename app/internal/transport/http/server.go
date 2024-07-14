@@ -1,12 +1,13 @@
 package http
 
 import (
+	"net"
+	"strconv"
+
 	"github.com/gofiber/fiber/v2"
 	middleware "github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/illiafox/spy-cat-test-assignment/app/config"
 	"go.uber.org/zap"
-	"net"
-	"strconv"
 )
 
 type Server struct {

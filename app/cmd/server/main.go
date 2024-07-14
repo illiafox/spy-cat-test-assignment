@@ -2,6 +2,9 @@ package main
 
 import (
 	"context"
+	"os"
+	"os/signal"
+
 	"github.com/gofiber/fiber/v2/log"
 	"github.com/huandu/go-sqlbuilder"
 	"github.com/illiafox/spy-cat-test-assignment/app/config"
@@ -13,8 +16,6 @@ import (
 	"github.com/illiafox/spy-cat-test-assignment/migrations"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"go.uber.org/zap"
-	"os"
-	"os/signal"
 )
 
 func main() {

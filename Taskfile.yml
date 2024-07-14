@@ -4,3 +4,15 @@ tasks:
   compose-up:
     cmds:
       - docker compose up -d
+  format:
+    cmds:
+      - go fmt ./...
+      - find . -name "*.go" -exec formattag -file {} \;
+      - find . -name "*.go" -exec gci write --skip-generated -s standard -s default {} \;
+      - find . -name "*.go" -exec gofumpt -l -w {} \;
+
+  format-install:
+    cmds:
+      - go install github.com/daixiang0/gci@v0.13.4
+      - go install github.com/momaek/formattag@v0.0.9
+      - go install mvdan.cc/gofumpt@v0.6.0

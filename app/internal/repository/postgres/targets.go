@@ -3,6 +3,8 @@ package postgres
 import (
 	"context"
 	"errors"
+	"time"
+
 	"github.com/huandu/go-sqlbuilder"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/apperrors"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/models"
@@ -10,7 +12,6 @@ import (
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/service/dto"
 	"github.com/illiafox/spy-cat-test-assignment/app/pkg/poolwrapper"
 	"github.com/jackc/pgx/v5"
-	"time"
 )
 
 type TargetsRepository struct {
@@ -38,7 +39,6 @@ func (r *TargetsRepository) Create(ctx context.Context, missionID int, lastTarge
 	}
 
 	return nil
-
 }
 
 func (r *TargetsRepository) Delete(ctx context.Context, missionID, targetID int) (err error) {
