@@ -3,15 +3,18 @@ package catapi
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/apperrors"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-type Client struct {
-}
+const BaseURL = "https://api.thecatapi.com"
+
+type Client struct{}
 
 func NewClient() *Client {
 	return &Client{}
@@ -19,15 +22,10 @@ func NewClient() *Client {
 
 func (c Client) CheckBreed(ctx context.Context, breed string) (formattedBreed string, err error) {
 
-	requestURL := fmt.Sprintf("https://api.thecatapi.com/v1/breeds/search?q=%s&attach_image=0",
-		url.QueryEscape(breed),
-	)
+	path := "/v1/breeds/search?attach_image=0&q=" + url.QueryEscape(breed)
+	requestURL := BaseURL + path
 
-	req, err := http.NewRequestWithContext(ctx,
-		"GET", requestURL,
-		nil,
-	)
-
+	req, err := http.NewRequestWithContext(ctx, "GET", requestURL, nil)
 	if err != nil {
 		return "", apperrors.Internal(err).Wrap("http: new request")
 	}
@@ -43,6 +41,12 @@ func (c Client) CheckBreed(ctx context.Context, breed string) (formattedBreed st
 
 	var body []struct {
 		Name string `json:"name"`
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		errBody, _ := io.ReadAll(resp.Body)
+		return "", apperrors.Internal(errors.New(string(errBody))).
+			Wrap("status code != 200").WithMetadata("status", resp.StatusCode)
 	}
 
 	if err = json.NewDecoder(resp.Body).Decode(&body); err != nil {
