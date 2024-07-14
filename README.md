@@ -58,7 +58,7 @@ A RESTful API for managing spy cats, their missions, and targets.
 ## Table of Contents
 
 - [Installation](#installation)
-- [(Optional) Updating breeds using Cats API](#installation)
+- [(Optional) Updating breeds using Cats API](#updating-breeds-list-using-cats-api)
 - [Postman Collection](#postman-collection)
 - [API Endpoints](#api-endpoints)
     - [Cats](#cats)
