@@ -1,0 +1,15 @@
+name: Greetings
+
+on: [pull_request_target, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: "Hi, thanks for taking the time to submit a issue. Make sure you have read [CONTRIBUTING.md](https://github.com/illiafox/spy-cat-test-assignment/blob/main/CONTRIBUTING.md)"
