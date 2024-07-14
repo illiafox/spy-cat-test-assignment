@@ -70,7 +70,7 @@ A RESTful API for managing spy cats, their missions, and targets.
 1. Clone the repository:
 
    ```sh
-   git clone github.com/illiafox/spy-cat-test-assignment.git
+   git clone https://github.com/illiafox/spy-cat-test-assignment.git
    cd spy-cat-test-assignment
    ```
 
