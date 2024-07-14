@@ -3,6 +3,7 @@ package postgres
 import (
 	"context"
 	"errors"
+
 	"github.com/huandu/go-sqlbuilder"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/apperrors"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/models"
@@ -35,7 +36,6 @@ func (r *NotesRepository) Create(ctx context.Context, missionID, targetID int, c
 	}
 
 	return nil
-
 }
 
 func (r *NotesRepository) All(ctx context.Context, missionID, targetID int) ([]*models.Note, error) {

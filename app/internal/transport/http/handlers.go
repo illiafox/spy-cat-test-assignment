@@ -2,10 +2,11 @@ package http
 
 import (
 	"fmt"
+	"net/http"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/apperrors"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/service/dto"
-	"net/http"
 )
 
 type Handler struct {
@@ -76,7 +77,7 @@ func (h Handler) UpdateCatByID(ctx *fiber.Ctx) error {
 		return RespondWithError(ctx, apperrors.InvalidRequest(err).Wrap("parse cat id"))
 	}
 
-	var req = UpdateCatRequest{
+	req := UpdateCatRequest{
 		CatID: catID,
 	}
 	if err = ctx.BodyParser(&req); err != nil {
@@ -289,7 +290,6 @@ func (h Handler) GetMissionTargets(ctx *fiber.Ctx) error {
 	resp.Targets = out
 
 	return ctx.JSON(resp)
-
 }
 
 func (h Handler) AddMissionTargets(ctx *fiber.Ctx) error {

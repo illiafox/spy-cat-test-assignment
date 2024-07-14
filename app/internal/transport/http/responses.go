@@ -1,8 +1,9 @@
 package http
 
 import (
-	"github.com/illiafox/spy-cat-test-assignment/app/internal/models"
 	"time"
+
+	"github.com/illiafox/spy-cat-test-assignment/app/internal/models"
 )
 
 type BaseResponse struct {

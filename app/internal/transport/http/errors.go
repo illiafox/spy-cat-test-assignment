@@ -3,12 +3,13 @@ package http
 import (
 	"errors"
 	"fmt"
+	"net/http"
+	"strings"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/apperrors"
 	"github.com/illiafox/spy-cat-test-assignment/app/internal/apperrors/codes"
 	"go.uber.org/zap"
-	"net/http"
-	"strings"
 )
 
 var errorCodesToHTTP = map[codes.Code]int{
@@ -85,7 +86,6 @@ func ErrorMiddleware(logger *zap.Logger) fiber.Handler {
 						fields = append(fields, zap.Any(k, v))
 					}
 				}
-
 			}
 
 			logger.Error("failed to process request", fields...)

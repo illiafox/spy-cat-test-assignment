@@ -3,11 +3,11 @@ package migrations
 import (
 	"embed"
 	"fmt"
-	"go.uber.org/zap"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/jackc/pgx/v5/stdlib"
 	"github.com/pressly/goose/v3"
+	"go.uber.org/zap"
 )
 
 //go:embed *.sql

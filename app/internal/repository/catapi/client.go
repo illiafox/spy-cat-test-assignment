@@ -5,11 +5,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/illiafox/spy-cat-test-assignment/app/internal/apperrors"
 	"io"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/illiafox/spy-cat-test-assignment/app/internal/apperrors"
 )
 
 const BaseURL = "https://api.thecatapi.com"
@@ -21,7 +22,6 @@ func NewClient() *Client {
 }
 
 func (c Client) CheckBreed(ctx context.Context, breed string) (formattedBreed string, err error) {
-
 	path := "/v1/breeds/search?attach_image=0&q=" + url.QueryEscape(breed)
 	requestURL := BaseURL + path
 

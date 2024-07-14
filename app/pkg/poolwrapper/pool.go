@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -111,5 +112,4 @@ func (p Pool) TxFunc(ctx context.Context, f func(context.Context, pgx.Tx) error)
 
 		return err
 	}
-
 }
