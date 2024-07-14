@@ -16,3 +16,8 @@ tasks:
       - go install github.com/daixiang0/gci@v0.13.4
       - go install github.com/momaek/formattag@v0.0.9
       - go install mvdan.cc/gofumpt@v0.6.0
+  generate-breeds-file:
+    env:
+      EXPORT_PATH: app/internal/repository/catapi/breeds.json
+    cmds:
+      - curl -s https://api.thecatapi.com/v1/breeds | jq '[.[].name]' > $EXPORT_PATH
