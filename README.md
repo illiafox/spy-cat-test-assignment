@@ -58,6 +58,7 @@ A RESTful API for managing spy cats, their missions, and targets.
 ## Table of Contents
 
 - [Installation](#installation)
+- [(Optional) Updating breeds using Cats API](#installation)
 - [Postman Collection](#postman-collection)
 - [API Endpoints](#api-endpoints)
     - [Cats](#cats)
@@ -83,6 +84,19 @@ A RESTful API for managing spy cats, their missions, and targets.
 The API will be available at `http://127.0.0.1:8080`.
 
 Postgres URI: `postgresql://postgres:dev_pass@localhost:5432/spy_cats`.
+
+## Updating breeds list using Cats API
+
+Application uses breeds defined in https://api.thecatapi.com/v1/breeds file for validation. If new breeds were added, you can regenerate [breeds.json](app/internal/repository/catapi/breeds.json):
+
+   ```sh
+   task generate-breeds-file
+   ```
+If you don't use [Taskfile](https://taskfile.dev/):
+```sh
+EXPORT_PATH=app/internal/repository/catapi/breeds.json
+curl -s https://api.thecatapi.com/v1/breeds | jq '[.[].name]' > $EXPORT_PATH
+```
 
 ## Postman Collection
 

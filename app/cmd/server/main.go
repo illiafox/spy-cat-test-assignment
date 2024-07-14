@@ -58,7 +58,10 @@ func main() {
 	targetsRepository := postgres.NewTargetsRepository(db)
 	notesRepository := postgres.NewNotesRepository(db)
 
-	catBreedChecker := catapi.NewClient()
+	catBreedChecker, err := catapi.NewClient()
+	if err != nil {
+		logger.Fatal("failed to create catapi client", zap.Error(err))
+	}
 
 	//
 
