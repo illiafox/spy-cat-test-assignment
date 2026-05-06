@@ -6,7 +6,7 @@ toolchain go1.24.1
 
 require (
 	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
-	github.com/gofiber/fiber/v2 v2.52.9
+	github.com/gofiber/fiber/v2 v2.52.13
 	github.com/huandu/go-sqlbuilder v1.27.3
 	github.com/ilyakaznacheev/cleanenv v1.5.0
 	github.com/jackc/pgx/v5 v5.6.0
